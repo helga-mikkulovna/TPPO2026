@@ -1,0 +1,338 @@
+.disciplines-page {
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.dp-title-row {
+  margin-bottom: 12px;
+  margin-left: 10px;
+}
+
+.dp-subjects {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 900px;
+}
+
+.dp-subject-item {
+  display: block;
+  text-decoration: none;
+  background-color: #e0e7ff;
+  color: #111;
+  padding: 12px 14px;
+  border-radius: 8px;
+}
+
+.dp-subject-item:hover {
+  filter: brightness(0.98);
+}
+
+.dp-header {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 100px;
+  background-color: #e0e7ff;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.dp-subject {
+  position: relative;
+}
+
+.dp-subject-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.dp-subject-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.dp-subject-name {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.dp-caret {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.dp-subject-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 6px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 6px;
+  z-index: 6;
+  width: min(520px, 70vw);
+  max-height: 260px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.dp-subject-option {
+  text-align: left;
+  background: #fff;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.dp-subject-option:hover {
+  background: #f0f0f0;
+}
+
+.dp-subject-option.active {
+  background: #e0e7ff;
+}
+
+.dp-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dp-btn {
+  background: #a9c2ff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.dp-btn:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.dp-period {
+  position: relative;
+}
+
+.dp-month {
+  position: relative;
+}
+
+.dp-month-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 6px;
+  margin-top: 6px;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  min-width: 160px;
+}
+
+.dp-month-option {
+  text-align: left;
+  background: #fff;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.dp-month-option:hover {
+  background: #f0f0f0;
+}
+
+.dp-period-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 6px;
+  margin-top: 6px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 140px;
+}
+
+.dp-period-option {
+  text-align: left;
+  background: #fff;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.dp-period-option:hover {
+  background: #f0f0f0;
+}
+
+.dp-date-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dp-date {
+  position: relative;
+}
+
+.disciplines-page .calendar-picker {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 10;
+  top: 100%;
+  left: -130px;
+  margin-top: 5px;
+}
+
+.dp-empty {
+  padding: 12px 0;
+}
+
+.dp-search {
+  margin: 10px 0 14px;
+  max-width: 520px;
+}
+
+.dp-search-input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+.dp-back {
+  margin-top: 10px;
+  background: #a9c2ff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.dp-tables {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 25px;
+}
+
+.dp-group-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.dp-table-wrap {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  width: fit-content;
+}
+
+.dp-table {
+  width: auto;
+  border-collapse: collapse;
+  min-width: 680px;
+  table-layout: fixed;
+}
+
+.dp-table th,
+.dp-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.dp-table th {
+  background-color: #f8f9fa;
+}
+
+.dp-th-student,
+.dp-td-student {
+  text-align: left;
+  width: 310px;
+  max-width: 310px;
+  min-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Sticky first column (student name) when horizontally scrolling */
+.dp-th-student {
+  position: sticky;
+  left: 0;
+  z-index: 3;
+  background-color: #f8f9fa;
+}
+
+.dp-td-student {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background-color: #fff;
+}
+
+.dp-th-student,
+.dp-td-student {
+  background-clip: padding-box;
+}
+
+.dp-th-date {
+  width: 72px;
+  min-width: 72px;
+  max-width: 72px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.dp-cell {
+  width: 72px;
+  min-width: 72px;
+  max-width: 72px;
+}
+
+.dp-present {
+  background-color: #c8e6c9;
+}
+
+.dp-absent {
+  background-color: #ef9a9a;
+}
+
+.dp-excused {
+  background-color: #90caf9;
+}
+
+.dp-empty-cell {
+  background-color: #e0e0e0;
+}

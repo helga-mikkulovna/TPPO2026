@@ -1,0 +1,95 @@
+.cp-root {
+  user-select: none;
+}
+
+.cp-header {
+  display: grid;
+  grid-template-columns: 32px 1fr 32px;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.cp-title {
+  text-align: center;
+  font-weight: 600;
+}
+
+.cp-nav {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 6px;
+  background: #e0e7ff;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.cp-edge {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.cp-edge-btn {
+  border: 1px solid #c7d2fe;
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 6px 8px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.cp-edge-btn.active {
+  background: #e0e7ff;
+  border-color: #a9c2ff;
+  font-weight: 600;
+}
+
+.cp-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 6px;
+}
+
+.cp-weekday {
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+}
+
+.cp-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.cp-cell {
+  height: 34px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.cp-cell:hover {
+  background: #f5f5f5;
+}
+
+.cp-cell:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.cp-cell--empty {
+  border: none;
+  background: transparent;
+}
+
+.cp-cell--selected {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}

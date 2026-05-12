@@ -1,0 +1,670 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
+
+.attendance-page {
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.schedule-header {
+  display: flex;
+  gap: 75px;
+  align-items: center;
+}
+
+.schedule-header h2 {
+  display: flex;
+  align-items: center;
+}
+
+.period-selector {
+  position: relative;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.period-selector button {
+  background: #e0e7ff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.period-options {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  z-index: 4;
+}
+
+.period-options div {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.period-options div:hover {
+  background-color: #f0f0f0;
+}
+
+.date-navigation {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.date-selector {
+  position: relative;
+}
+
+.date-button {
+  background: #e0e7ff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.calendar-picker {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  z-index: 10;
+  top: 100%;
+  left: -130px;
+  margin-top: 5px;
+}
+
+.calendar-dates {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.calendar-date-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 0.2s;
+}
+
+.calendar-date-item:hover {
+  background-color: #f0f0f0;
+}
+
+.calendar-date-item.active {
+  background-color: #e0e7ff;
+  font-weight: bold;
+}
+
+.attendance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e0e7ff;
+  padding: 10px;
+  border-radius: 5px;
+  width: 65%;
+  box-sizing: border-box;
+}
+
+.attendance-top-row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  position: relative;
+}
+
+.discipline-selector {
+  position: relative;
+  flex: 1;
+  cursor: pointer;
+}
+
+.discipline-selector button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.lesson-selector-btn {
+  background: none;
+  border: none;
+  padding: 0 5px;
+  cursor: pointer;
+  font-size: 12px;
+  color: #666;
+  transition: color 0.2s;
+}
+
+.lesson-selector-btn:hover {
+  color: #333;
+}
+
+.lesson-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 5px;
+  min-width: 300px;
+  max-width: 400px;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.lesson-option {
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.lesson-option:last-child {
+  border-bottom: none;
+}
+
+.lesson-option:hover {
+  background-color: #f5f5f5;
+}
+
+.lesson-option.confirmed {
+  background-color: #e8f5e9;
+  border-left: 3px solid #4caf50;
+}
+
+.lesson-option.confirmed:hover {
+  background-color: #d4edda;
+}
+
+.lesson-option.confirmed.active {
+  background-color: #a5d6a7;
+  font-weight: 500;
+  border-left: 3px solid #2e7d32;
+}
+
+.lesson-option.unconfirmed {
+  background-color: #ffebee;
+  border-left: 3px solid #f44336;
+}
+
+.lesson-option.unconfirmed:hover {
+  background-color: #ffcdd2;
+}
+
+.lesson-option.unconfirmed.active {
+  background-color: #ef9a9a;
+  font-weight: 500;
+  border-left: 3px solid #c62828;
+}
+
+.lesson-option.active {
+  background-color: #e0e7ff;
+  font-weight: 500;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+}
+
+.control-btn {
+  background: #a9c2ff;
+  border: none;
+  border-radius: 5px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.control-text {
+  margin: 0 10px;
+}
+
+.time-selector {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.time-selector button {
+  background: #e0e7ff;
+  border: none;
+  border-radius: 5px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+/* Bottom row: table on the left, scan upload on the right */
+.attendance-table-row {
+  width: 65%;
+  box-sizing: border-box;
+  margin-top: 12px;
+}
+
+.attendance-table {
+  width: 100%;
+  box-sizing: border-box;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.confirmation-section {
+  position: absolute;
+  top: 0;
+  right: 50px;
+  width: calc(35% - 60px);
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.scan-section {
+  margin-top: 20%;
+}
+
+.attendance-table th, .attendance-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Column sizing */
+.attendance-table th:nth-child(1),
+.attendance-table td:nth-child(1) {
+  width: 100px;
+  max-width: 100px;
+  white-space: nowrap;
+}
+
+.attendance-table th:nth-child(2),
+.attendance-table td:nth-child(2) {
+  width: 50px;
+  max-width: 50px;
+  white-space: nowrap;
+}
+
+/* Mark columns: bluetooth, paper, manual, total */
+.attendance-table th:nth-child(n + 3),
+.attendance-table td:nth-child(n + 3) {
+  width: 20px;
+  max-width: 20px;
+  padding: 4px 2px;
+  white-space: nowrap;
+}
+
+.attendance-table th:nth-child(n + 3) {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.attendance-table th:nth-child(n + 3) i {
+  font-size: 12px;
+}
+
+.attendance-table th {
+  background-color: #f8f9fa;
+}
+
+.present {
+  background-color: #c8e6c9;
+}
+
+.manual-cell {
+    cursor: pointer;
+}
+
+.present-manual {
+    background-color: #a5d6a7;
+}
+
+.absent-manual {
+    background-color: #ef9a9a;
+}
+
+.excused-manual {
+    background-color: #90caf9;
+}
+
+.total-cell {
+    cursor: default;
+}
+
+.total-cell.present {
+    background-color: #a5d6a7;
+}
+
+.total-cell.absent {
+    background-color: #ef9a9a;
+}
+
+.total-cell.excused {
+    background-color: #90caf9;
+}
+
+.total-present {
+    color: green;
+}
+
+.total-absent {
+    color: red;
+}
+
+.unconfirmed-status {
+  margin-bottom: 20px;
+  padding: 12px;
+  background-color: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.unconfirmed-status span {
+  font-weight: bold;
+  color: #856404;
+}
+
+.unconfirmed-status button {
+  background-color: #ffc107;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #333;
+  transition: background-color 0.2s;
+  width: 200px;
+  font-size: 15px;
+}
+
+.unconfirmed-status button:hover {
+  background-color: #ffb300;
+}
+
+.confirmed-status {
+  margin-bottom: 20px;
+  padding: 12px;
+  background-color: #d4edda;
+  border: 1px solid #28a745;
+  border-radius: 5px;
+}
+
+.confirmed-status span:first-child {
+  font-weight: bold;
+  color: #155724;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.confirmed-status .summary {
+  background-color: white;
+  border: 1px solid #28a745;
+  padding: 12px;
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 0fr 1fr 1fr;
+  gap: 10px;
+  text-align: center;
+}
+
+.confirmed-status .summary p {
+  margin: 0;
+  font-size: 13px;
+  color: #333;
+}
+
+.confirmed-status .summary p span {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  color: #28a745;
+  margin-top: 5px;
+}
+
+.unconfirmed-status button, .confirm-btn {
+  background-color: #a9c2ff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-scan {
+  text-align: center;
+}
+
+.add-scan button {
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  border: 1px dashed #ccc;
+  background: none;
+  cursor: pointer;
+}
+
+.add-scan-file {
+  margin: 8px 0 0;
+  font-size: 12px;
+  color: #333;
+  word-break: break-word;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 400px;
+}
+
+.scan-modal {
+  width: 520px;
+  max-width: 92vw;
+}
+
+.scan-modal-hint {
+  margin: 8px 0 16px;
+  font-size: 13px;
+  color: #555;
+}
+
+.scan-dropzone {
+  border: 2px dashed #a9c2ff;
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+  text-align: center;
+  background: #f8f9ff;
+}
+
+.scan-dropzone:hover {
+  background: #eef2ff;
+}
+
+.scan-dropzone-title {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.scan-dropzone-subtitle {
+  font-size: 12px;
+  color: #666;
+}
+
+.scan-selected {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #333;
+  word-break: break-word;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.modal ul {
+  list-style: none;
+  padding: 0;
+}
+
+.modal ul li {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal ul li:hover {
+  background-color: #f0f0f0;
+}
+
+.edit-menu {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.edit-option {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.edit-option.active {
+    background-color: #e0e7ff;
+    border-radius: 3px;
+}
+
+.color-box {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 3px;
+}
+
+.add-doc-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px dashed #ccc;
+}
+
+.delete-mark {
+    color: red;
+    cursor: pointer;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.close-edit-menu {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.documents-list {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.document-item {
+    padding: 8px;
+    background-color: #f0f0f0;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    font-size: 12px;
+    word-break: break-word;
+}
+
+.time-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.time-button {
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.time-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+    min-width: 150px;
+}
+
+.time-option {
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.time-option:last-child {
+    border-bottom: none;
+}
+
+.time-option:hover {
+    background-color: #f5f5f5;
+}
+
+.time-option.active {
+    background-color: #e0e7ff;
+    font-weight: bold;
+}
+
+.no-lesson-message {
+    padding: 40px;
+    text-align: center;
+    font-size: 18px;
+    color: #999;
+    margin-top: 20px;
+}
+
+

@@ -1,0 +1,646 @@
+.schedule-page {
+    padding: 20px;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .schedule-header {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    width: 85%;
+  }
+  
+  .schedule-header h2 {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+  }
+  
+  .period-selector {
+    position: relative;
+    display: inline-block;
+    margin-left: 10px;
+  }
+  
+  .period-selector button {
+    background: #e0e7ff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 25px;
+  }
+  
+  .period-options {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 4;
+  }
+  
+  .period-options div {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .period-options div:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .date-navigation {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: auto;
+  }
+  
+  .date-selector {
+    position: relative;
+  }
+
+  .date-button {
+    background: #e0e7ff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .calendar-picker {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 10;
+    top: 100%;
+    left: 0;
+    margin-top: 5px;
+  }
+
+  .calendar-dates {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  .calendar-date-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.2s;
+  }
+
+  .calendar-date-item:hover {
+    background-color: #f0f0f0;
+  }
+
+  .calendar-date-item.active {
+    background-color: #e0e7ff;
+    font-weight: bold;
+  }
+
+  .date-input-wrapper {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 10;
+    top: 100%;
+    left: 0;
+    margin-top: 5px;
+    display: flex;
+    gap: 5px;
+  }
+
+  .date-input {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 120px;
+  }
+
+  .date-submit {
+    padding: 5px 10px;
+    background: #e0e7ff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  .date-navigation button {
+    margin: 0 5px;
+    background: #e0e7ff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .add-event-btn {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .schedule-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 600px;
+    width: 85%;
+    min-width: 85%;
+    overflow-y: auto;
+    padding-right: 10px;
+  }
+
+  .no-schedule {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+    font-size: 18px;
+  }
+  
+  .schedule-item {
+    display: grid;
+    grid-template-columns: 40px 80px 2fr 1fr 100px 50px;
+    align-items: center;
+    padding: 10px;
+    padding-left: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .schedule-item.red {
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .schedule-item.red:hover {
+    background-color: #ffebee;
+  }
+  
+  .schedule-item.green {
+    background-color: #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .schedule-item.green:hover {
+    background-color: #e8f5e9;
+  }
+  
+  .schedule-item.blue {
+    background-color: #e0e7ff;
+  }
+
+  .schedule-item.event-item {
+    background-color: #ead1dc;
+    border-left-color: #d946a6;
+    color: #881d4f;
+  }
+
+  .schedule-item.event-item:hover {
+    background-color: #e0c0d5;
+    box-shadow: 0 2px 8px rgba(201, 24, 142, 0.2);
+  }
+  
+  .item-action {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .item-action.red {
+    background-color: red;
+  }
+  
+  .item-action.green {
+    background-color: green;
+  }
+  
+  .item-action.blue {
+    background-color: blue;
+  }
+  
+  .item-action.disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .item-action.green {
+    background-color: green;
+  }
+  
+  .item-action.blue {
+    background-color: #a9c2ff;
+  }
+
+  .item-action.disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  .item-action.disabled:hover {
+    background-color: #ccc;
+  }
+
+
+/* Недельное расписание */
+
+.week-schedule-container {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 220px);
+  display: flex;
+  flex-direction: column;
+}
+
+.week-schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  background-color: white;
+  table-layout: fixed;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.week-schedule-table thead {
+  background-color: #f5f5f5;
+  border-bottom: 2px solid #ddd;
+  flex-shrink: 0;
+}
+
+.week-schedule-table tbody {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.week-schedule-table th {
+  padding: 12px 4px;
+  text-align: center;
+  border-right: 1px solid #ddd;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+.week-schedule-table th:last-child {
+  border-right: none;
+}
+
+.week-schedule-table tr {
+  display: flex;
+  flex: 1;
+  border-bottom: 1px solid #ddd;
+}
+
+.week-schedule-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.time-header {
+  width: 80px;
+  flex-shrink: 0;
+}
+
+.day-header {
+  flex: 1;
+  min-width: 0;
+}
+
+.day-name {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.day-date {
+  font-size: 12px;
+  color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.time-cell {
+  padding: 8px 4px;
+  text-align: center;
+  border-right: 1px solid #ddd;
+  background-color: #f9f9f9;
+  font-size: 11px;
+  font-weight: 500;
+  width: 80px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.lesson-cell {
+  border-right: 1px solid #ddd;
+  padding: 4px;
+  vertical-align: top;
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  overflow: visible;
+  min-height: 70px;
+}
+
+.lesson-cell:last-child {
+  border-right: none;
+}
+
+/* Выделение текущей недели в двухнедельном расписании */
+.week-schedule-table th.day-header.current-week {
+  background: linear-gradient(180deg, #e3f2fd 0%, #bbdefb 100%);
+}
+
+/* Разделитель между двумя неделями в двухнедельном расписании */
+.two-weeks-view .week-schedule-table th:nth-child(7),
+.two-weeks-view .week-schedule-table td:nth-child(7) {
+  border-right: 4px solid;
+  border-image: linear-gradient(180deg, #ccc 0%, #888 50%, #ccc 100%) 0 1 0 0;
+  box-shadow: inset -2px 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.lesson-block {
+  padding: 6px;
+  margin: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  font-size: 11px;
+  border: 1px solid;
+  position: absolute;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+  height: auto;
+  min-height: 50px;
+  box-sizing: border-box;
+}
+
+/* Если занятие одно - фиксированный размер без эффектов */
+.lesson-block:only-child {
+  position: relative;
+  width: auto;
+  height: auto;
+  min-height: 50px;
+  margin: 0;
+  transform: none !important;
+  filter: none !important;
+  z-index: auto !important;
+  transition: box-shadow 0.2s;
+}
+
+.lesson-block:only-child:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Если занятий несколько - стекирование */
+.lesson-block:not(:only-child):nth-child(1) {
+  z-index: 3;
+  transform: translateY(0px) translateX(-3px);
+}
+
+.lesson-block:not(:only-child):nth-child(2) {
+  z-index: 2;
+  transform: translateY(8px) translateX(3px);
+  filter: brightness(0.9);
+}
+
+.lesson-block:not(:only-child):nth-child(3) {
+  z-index: 1;
+  transform: translateY(15px) translateX(8px);
+  filter: brightness(0.8);
+}
+
+
+/* Разбегание при клике на ячейку - только если несколько занятий */
+.lesson-cell.active .lesson-block:not(:only-child):nth-child(1) {
+  transform: translateY(-15px) translateX(0px);
+  z-index: 5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.lesson-cell.active .lesson-block:not(:only-child):nth-child(2) {
+  transform: translateY(24px) translateX(32px);
+  z-index: 5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.lesson-cell.active .lesson-block:not(:only-child):nth-child(3) {
+  transform: translateY(65px) translateX(0px);
+  z-index: 5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.rotate-lessons-btn {
+  position: absolute;
+  bottom: 80px;
+  right: -40px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.rotate-lessons-btn:hover {
+  background-color: #1976D2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transform: scale(1.1);
+}
+
+.rotate-lessons-btn:active {
+  transform: scale(0.95);
+}
+
+.lesson-block.confirmed {
+  background-color: #c8e6c9;
+  border-color: #4caf50;
+  color: #1b5e20;
+}
+
+.lesson-block.confirmed:hover {
+  background-color: #a5d6a7;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+}
+
+.lesson-block.unconfirmed {
+  background-color: #ffcccc;
+  border-color: #f44336;
+  color: #b71c1c;
+}
+
+.lesson-block.unconfirmed:hover {
+  background-color: #ff9999;
+  box-shadow: 0 2px 8px rgba(244, 67, 54, 0.3);
+}
+
+.lesson-block-title {
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.lesson-block-info {
+  font-size: 10px;
+  opacity: 0.8;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Двухнедельное расписание */
+
+.two-weeks-view {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 220px);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Попап с деталями занятия */
+
+.lesson-detail-popup {
+  position: fixed;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  min-width: 320px;
+  max-width: 400px;
+}
+
+.close-popup {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #999;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.close-popup:hover {
+  color: #333;
+}
+
+.popup-header {
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.popup-header h3 {
+  margin: 0;
+  font-size: 15px;
+  color: #333;
+}
+
+.popup-content {
+  padding: 12px 16px;
+}
+
+.popup-content p {
+  margin: 8px 0;
+  font-size: 13px;
+  color: #555;
+}
+
+.popup-content strong {
+  color: #333;
+  display: inline-block;
+  min-width: 80px;
+}
+
+.popup-actions {
+  padding: 12px 16px;
+  border-top: 1px solid #eee;
+}
+
+.popup-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.popup-btn.confirmed {
+  background-color: #4caf50;
+  color: white;
+}
+
+.popup-btn.confirmed:hover {
+  background-color: #388e3c;
+}
+
+.popup-btn.unconfirmed {
+  background-color: #f44336;
+  color: white;
+}
+
+.popup-btn.unconfirmed:hover {
+  background-color: #d32f2f;
+}
